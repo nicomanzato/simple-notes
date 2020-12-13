@@ -22,6 +22,14 @@ public class NoteController {
         return notebook.getNotes();
     }
     
+    @GetMapping("/notes/{id}")
+    public NoteDTO fetchNotesById(@PathVariable Long id) {
+    	  
+    	NoteDTO note = notebookService.findNoteById(id);
+    	    	
+        return note;
+    }
+    
     @GetMapping("/addNote")
     public void addNote() {
     	

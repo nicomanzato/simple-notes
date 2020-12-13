@@ -26,6 +26,19 @@ public class NotebookService {
 		return notebookDTO;
 	}
 	
+	public NoteDTO findNoteById(long noteId) {
+		
+		Session session = this.sessionFactory.openSession();
+				
+		Note note = notebookRepository.findNoteById(session, noteId);
+		
+		NoteDTO noteDTO = new NoteDTO(note);
+		
+		session.close();
+
+		return noteDTO;
+	}
+	
 	public void addNote(Note note) {
 				
 		Session session = this.sessionFactory.openSession();
