@@ -3,11 +3,8 @@ package com.example.easynotes.services;
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
 import org.hibernate.Transaction;
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.stereotype.Repository;
 
-import com.example.easynotes.model.Note;
-import com.example.easynotes.model.Notebook;
+import com.example.easynotes.model.*;
 import com.example.easynotes.repository.NotebookRepository;
 
 public class NotebookService {
@@ -16,25 +13,24 @@ public class NotebookService {
 	
     NotebookRepository notebookRepository;
 	
-	public Notebook findNotebook() {
-		Notebook notebook;
+	public NotebookDTO findNotebook() {
 		
 		Session session = this.sessionFactory.openSession();
 				
-		notebook = notebookRepository.findNotebook(session);
+		Notebook notebook = notebookRepository.findNotebook(session);
+		
+		NotebookDTO notebookDTO = new NotebookDTO(notebook);
 		
 		session.close();
 
-		return notebook;
+		return notebookDTO;
 	}
 	
 	public void addNote(Note note) {
-		
-		Notebook notebook;
-		
+				
 		Session session = this.sessionFactory.openSession();
 				
-		notebook = notebookRepository.findNotebook(session);
+		Notebook notebook = notebookRepository.findNotebook(session);
 		
 		Transaction tx = null;
 		
@@ -53,12 +49,10 @@ public class NotebookService {
 	}
 	
 	public void deleteNote(long noteId) {
-		
-		Notebook notebook;
-		
+				
 		Session session = this.sessionFactory.openSession();
 				
-		notebook = notebookRepository.findNotebook(session);
+		Notebook notebook = notebookRepository.findNotebook(session);
 		
 		Note note = notebookRepository.findNoteById(session, noteId);
 		

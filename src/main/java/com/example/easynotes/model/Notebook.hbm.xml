@@ -11,7 +11,7 @@
 		   </generator>
 		</id>
 		
-		<set name="notes" lazy="false" cascade="all">
+		<set name="notes" lazy="extra" cascade="all">
 			<key column="ID_NOTEBOOK" />
 			<one-to-many  class="com.example.easynotes.model.Note" />
 		</set>

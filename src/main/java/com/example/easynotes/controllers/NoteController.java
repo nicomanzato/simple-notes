@@ -1,7 +1,6 @@
 package com.example.easynotes.controllers;
 
-import com.example.easynotes.model.Note;
-import com.example.easynotes.model.Notebook;
+import com.example.easynotes.model.*;
 import com.example.easynotes.services.NotebookService;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -12,14 +11,13 @@ import java.util.Set;
 @RequestMapping("/api")
 public class NoteController {
 	
-	
 	@Autowired
 	NotebookService notebookService;
 
     @GetMapping("/notes")
-    public Set<Note> fetchAllNotes() {
+    public Set<NoteDTO> fetchAllNotes() {
     	  
-    	Notebook notebook = notebookService.findNotebook();
+    	NotebookDTO notebook = notebookService.findNotebook();
     	    	
         return notebook.getNotes();
     }
@@ -44,7 +42,7 @@ public class NoteController {
     @GetMapping("/notebook")
     public long getNotebook() {
     	  
-    	Notebook notebook = notebookService.findNotebook();
+    	NotebookDTO notebook = notebookService.findNotebook();
     	    	
         return notebook.getId();
     }

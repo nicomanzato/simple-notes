@@ -19,13 +19,9 @@ public class NotebookRepository {
 		
 		Query query = session.createQuery("from Notebook");
 		query.setMaxResults(1);
-		
 		notebook = (Notebook) query.getSingleResult();
-		
-		
 
 		return notebook;
-		
 	}
 	
 	public Note findNoteById(Session session, long noteId) {
@@ -34,12 +30,8 @@ public class NotebookRepository {
 		
 		Query query = session.createQuery("from Note note where note.id=:id");
 		query.setParameter("id", noteId);
-		
 		query.setMaxResults(1);
-		
 		note = (Note) query.getSingleResult();
-		
-		
 
 		return note;
 		
