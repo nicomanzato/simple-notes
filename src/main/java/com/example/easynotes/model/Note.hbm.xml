@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE hibernate-mapping PUBLIC 
+	"-//Hibernate/Hibernate Mapping DTD//EN"
+	"http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd"> 
+<hibernate-mapping package="com.example.easynotes.model">
+	<class name="Note" optimistic-lock="version" table="NOTE" abstract="false">
+		<id name="id" type="long" column="ID_NOTE" unsaved-value="0">
+			<generator class="native">
+		     	<param name="sequence">s_tasks</param>
+		   </generator>
+		</id>
+		<property name="title" length="20" />
+		<property name="content" length="500" />
+		<property name="createdAt" column="CREATED_AT" />
+		<property name="updatedAt" column="UPDATED_AT" />
+	</class>
+</hibernate-mapping>

@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xmlns:context="http://www.springframework.org/schema/context"
+    xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd
+    http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context.xsd">
+	<bean id="sessionFactory" primary="true" class="org.springframework.orm.hibernate5.LocalSessionFactoryBean">
+
+		<property name="mappingResources">
+			<list>
+				<value>com/example/easynotes/model/Notebook.hbm.xml</value>
+				<value>com/example/easynotes/model/Note.hbm.xml</value>
+			</list>
+		</property>
+		<property name="hibernateProperties">
+			<props>
+				<prop key="hibernate.dialect">org.hibernate.dialect.MySQL5InnoDBDialect</prop>
+				<prop key="hibernate.show_sql">false</prop>
+				<prop key="hibernate.connection.url">jdbc:mysql://localhost:3306/notes_app</prop>
+				<prop key="hibernate.connection.username">root</prop>
+        		<prop key="hibernate.connection.password">niconico</prop>
+			</props>
+		</property>
+	</bean>
+	
+</beans>
